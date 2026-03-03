@@ -42,3 +42,11 @@ class Word2Vec:
         self.W_out[neg_indices] -= self.learning_rate * grad_neg
 
         return loss
+
+    def save_model(self, in_path, out_path):
+        np.save(in_path, self.W_in)
+        np.save(out_path, self.W_out)
+
+    def load_model(self, in_path, out_path):
+        self.W_in = np.load(in_path)
+        self.W_out = np.load(out_path)
