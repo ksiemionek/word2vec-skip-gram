@@ -19,3 +19,11 @@ class Vocabulary:
                 self.word_to_idx[word] = idx
                 self.idx_to_word[idx] = word
                 idx += 1
+
+    def get_pairs(self, window_size):
+        for idx, target in enumerate(self.words_vectorized):
+            start = max(0, idx - window_size)
+            end = min(len(self.words_vectorized), idx + window_size + 1)
+            for j in range(start, end):
+                if j != idx:
+                    yield target, self.words_vectorized[j]
