@@ -1,4 +1,5 @@
 import numpy as np
+from utils import load_tokens
 
 
 class Vocabulary:
@@ -6,16 +7,10 @@ class Vocabulary:
         self.word_to_idx = {}
         self.idx_to_word = {}
 
-        words = self.load_tokens(file_path)
+        words = load_tokens(file_path)
         self.build(words)
 
         self.words_vectorized = np.array([self.word_to_idx[word] for word in words])
-
-    @staticmethod
-    def load_tokens(file_path):
-        with open(file_path, "r") as f:
-            text = f.read()
-        return text.split()
 
     def build(self, words):
         idx = 0
