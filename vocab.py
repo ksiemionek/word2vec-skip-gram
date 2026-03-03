@@ -27,3 +27,6 @@ class Vocabulary:
             for j in range(start, end):
                 if j != idx:
                     yield target, self.words_vectorized[j]
+
+    def __len__(self):
+        return len(self.word_to_idx)
