@@ -1,0 +1,6 @@
+FILE_PATH     = 'text8'
+N_EMBEDDING   = 50
+WINDOW_SIZE   = 2
+N_NEGATIVES   = 5
+LEARNING_RATE = 0.025
+EPOCHS        = 1
