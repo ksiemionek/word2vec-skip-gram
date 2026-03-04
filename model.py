@@ -11,7 +11,7 @@ class Word2Vec:
 
         freqs = np.bincount(words_vectorized) ** 0.75
         probs = freqs / np.sum(freqs)
-        self.neg_table = self.neg_table = np.random.choice(vocab_size, size=10000000, p=probs)
+        self.neg_table = np.random.choice(vocab_size, size=10000000, p=probs)
 
     def sample_negatives(self, target_idx, context_idx, n_negatives):
         negs = []
@@ -29,7 +29,7 @@ class Word2Vec:
         context_prob = sigmoid(np.dot(target_v, context_v))
         neg_prob = sigmoid(-(negs_v @ target_v))
 
-        loss = -np.log(context_prob + 1e-9) - np.sum(np.log(neg_prob + 1e-9))
+        loss = -np.log(context_prob) - np.sum(np.log(neg_prob))
 
         context_err = context_prob - 1
         neg_err = 1 - neg_prob
