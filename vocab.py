@@ -11,7 +11,9 @@ class Vocabulary:
         words = load_tokens(file_path)
         self.build(words)
 
-        self.words_vectorized = np.array([self.word_to_idx[word] for word in words])
+        self.words_vectorized = np.array(
+            [self.word_to_idx[word] for word in words if word in self.word_to_idx]
+        )
 
     def build(self, words):
         counts = {}
