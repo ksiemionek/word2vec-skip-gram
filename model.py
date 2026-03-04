@@ -10,12 +10,13 @@ class Word2Vec:
         self.W_out = np.zeros((vocab_size, n_embedding))
 
         freqs = np.bincount(words_vectorized) ** 0.75
-        self.neg_probs = freqs / np.sum(freqs)
+        probs = freqs / np.sum(freqs)
+        self.neg_table = self.neg_table = np.random.choice(vocab_size, size=10000000, p=probs)
 
     def sample_negatives(self, target_idx, context_idx, n_negatives):
         negs = []
         while len(negs) < n_negatives:
-            idx = np.random.choice(self.vocab_size, p=self.neg_probs)
+            idx = self.neg_table[np.random.randint(len(self.neg_table))]
             if idx != target_idx and idx != context_idx:
                 negs.append(idx)
         return negs
