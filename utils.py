@@ -1,9 +1,6 @@
 import numpy as np
 from numpy.typing import NDArray
 
-from model import Word2Vec
-from vocab import Vocabulary
-
 
 def load_tokens(file_path: str) -> list[str]:
     with open(file_path, "r") as f:
@@ -15,7 +12,9 @@ def sigmoid(x: NDArray) -> NDArray:
     return 1 / (1 + np.exp(-x))
 
 
-def nearest_neighbors(word: str, vocab: Vocabulary, w2v: Word2Vec, top_n: int) -> None:
+def nearest_neighbors(
+    word: str, vocab: "Vocabulary", w2v: "Word2Vec", top_n: int
+) -> None:
     idx = vocab.word_to_idx[word]
     vec = w2v.W_in[idx]
 
@@ -29,7 +28,11 @@ def nearest_neighbors(word: str, vocab: Vocabulary, w2v: Word2Vec, top_n: int) -
 
 
 def train_model(
-    vocab: Vocabulary, w2v: Word2Vec, epochs: int, window_size: int, n_negatives: int
+    vocab: "Vocabulary",
+    w2v: "Word2Vec",
+    epochs: int,
+    window_size: int,
+    n_negatives: int,
 ) -> None:
     for epoch in range(epochs):
         total_loss = 0
