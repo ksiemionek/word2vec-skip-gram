@@ -44,7 +44,6 @@ Similarity computed using Euclidean distance on `W_in` embeddings.
 | Query  | 1          | 2 | 3 | 4         | 5            |
 |--------|------------|---|---|-----------|--------------|
 | **jet**    | refueling  | turbojet | harriers | aero      | tomcat       |
-| **brains** | telepathic | limitless | fingerprints | fetuses   | echolocation |
 | **king**   | rightful   | claimant | wenceslaus | abdicate  | reigns       |
 | **queen**  | elizabeth  | princess | consort | isabella  | highness     |
 | **apple**  | macintosh  | mac | ibm | hypercard | pcs          |
